@@ -1,0 +1,23 @@
+
+# variaveis de senhas e credenciais
+.env
+.env.*
+!.env.example
+
+# Dependencias
+/vendor/
+
+# Logs
+*.log
+
+# Operadores de sistema
+.DS_Store
+Thumbs.db
+
+# configs da IDE
+.vscode/
+.idea/
+
+# arquivos temporarios
+*.tmp
+*.temp
