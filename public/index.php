@@ -25,15 +25,26 @@ $users = $stmt->fetchAll();
     <h2>Usuários fictícios</h2>
 
     <?php if (count($users) > 0): ?>
-        <ul>
-            <?php foreach ($users as $user): ?>
-                <li>
-                    <?= htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8') ?>
-                    —
-                    <?= htmlspecialchars($user['email'], ENT_QUOTES, 'UTF-8') ?>
-                </li>
-            <?php endforeach; ?>
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome de usuário</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($users as $user): ?>
+                    <tr>
+                        <td>
+                            <?= htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8') ?>
+                        </td>
+                        <td>
+                            <?= htmlspecialchars($user['email'], ENT_QUOTES, 'UTF-8') ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     <?php else: ?>
         <p>Nenhum usuário cadastrado.</p>
     <?php endif; ?>
