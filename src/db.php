@@ -4,7 +4,7 @@
 $host = getenv('DB_HOST') ?: 'db';
 $dbname = getenv('DB_NAME') ?: 'webseclab';
 $username = getenv('DB_USER') ?: 'webseclab';
-$password = getenv('DB_PASSWORD') ?: '';
+$password = getenv('DB_PASSWORD') ?: 'BALABLABAL';
 
 $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
 
