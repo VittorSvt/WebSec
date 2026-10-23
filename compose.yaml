@@ -10,7 +10,7 @@ services:
       DB_HOST: db
       DB_NAME: webseclab
       DB_USER: webseclab
-      DB_PASSWORD: ${DB_PASSWORD:?Defina DB_PASSWORD no arquivo .env}
+      DB_PASSWORD: ${DB_PASSWORD:BLABLABAL}
     depends_on:
       db:
         condition: service_healthy
@@ -20,8 +20,8 @@ services:
     environment:
       MARIADB_DATABASE: webseclab
       MARIADB_USER: webseclab
-      MARIADB_PASSWORD: ${DB_PASSWORD:?Defina DB_PASSWORD no arquivo .env}
-      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?Defina DB_ROOT_PASSWORD no arquivo .env}
+      MARIADB_PASSWORD: ${DB_PASSWORD:BLABLABAL}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:BLABLABALROOT}
     volumes:
       - mariadb_data:/var/lib/mysql
       - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
