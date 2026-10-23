@@ -4,6 +4,10 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
+    volumes:
+      - ./public:/var/www/html
+      - ./src:/var/www/src
+      - ./labs:/var/www/labs
     ports:
       - "127.0.0.1:8080:80"
     environment:

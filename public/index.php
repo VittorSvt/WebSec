@@ -29,7 +29,7 @@ $users = $stmt->fetchAll();
             <thead>
                 <tr>
                     <th>Nome de usuário</th>
-                    <th>Email</th>
+                    <th>Emails</th>
                 </tr>
             </thead>
             <tbody>

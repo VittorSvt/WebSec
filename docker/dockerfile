@@ -3,6 +3,9 @@ FROM php:8.3-apache
 
 RUN docker-php-ext-install pdo_mysql
 
+COPY docker/labs.conf /etc/apache2/conf-available/labs.conf
+RUN a2enconf labs
+
 COPY public/ /var/www/html/
 COPY src/ /var/www/src/
 
