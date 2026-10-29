@@ -39,7 +39,7 @@ O payload funciona da seguinte forma:
 2. `OR '1'='1'` adiciona uma condição sempre verdadeira à consulta.
 3. `-- ` inicia um comentário SQL no MariaDB, ignorando o restante da instrução.
 
-Como resultado, a condição do `WHERE` passa a ser verdadeira para todas as linhas, e a consulta retorna todos os usuários da tabela.
+Como resultado, a condição do `WHERE` passa a ser verdadeira para todas as linhas, a consulta retorna todos os usuários da tabela.
 
 **Impacto observado:** a busca deixa de restringir os resultados ao usuário solicitado e expõe todos os registros disponíveis nessa consulta.
 
