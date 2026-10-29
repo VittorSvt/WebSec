@@ -10,7 +10,7 @@ O projeto será desenvolvido de forma incremental, com implementações vulnerá
 
 ## Vulnerabilidades estudadas
 
-- [ ] SQL Injection
+- [X] SQL Injection
 - [ ] Cross-Site Scripting (XSS)
 - [ ] Authentication
 - [ ] Session Management
