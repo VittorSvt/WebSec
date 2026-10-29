@@ -1,6 +1,7 @@
 
 <?php
 
+echo '<link rel="stylesheet" href="/style.css">';
 require_once __DIR__ . '/../src/db.php';
 
 $stmt = $pdo->prepare(

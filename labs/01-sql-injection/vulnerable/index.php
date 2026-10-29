@@ -1,3 +1,4 @@
+
 <?php
 
 require __DIR__ . '/../../../src/db.php';
@@ -12,47 +13,85 @@ if ($search !== '') {
     $users = $stmt->fetchAll();
 }
 
-echo "<h1 style='color: purple;'>WebSecLab - SQL Injection</h1>";
+?>
 
-echo '<form method="GET">';
-echo '<label for="username" style="background-color: #222; color: white; padding: 2px;">Nome de usuário:</label>';
-echo '<input type="text" id="username" name="username">';
-echo '<button type="submit">Buscar</button>';
-echo '</form>';
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSecLab - SQL Injection</title>
 
-if ($users) {
-    echo '<h2>Resultados da busca</h2>';
-    echo '<table>';
-    echo '<thead>';
-    echo '<tr>';
-    echo '<th style="background-color: #222; color: white;">ID</th>';
-    echo '<th style="background-color: #222; color: white;">Nome de usuário</th>';
-    echo '<th style="background-color: #222; color: white;">E-mail</th>';
-    echo '</tr>';
-    echo '</thead>';
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
 
-    echo '<tbody>';
+    <header>
+        <h1>WebSecLab - SQL Injection</h1>
+        <p>Laboratório de segurança web</p>
+    </header>
 
-    foreach ($users as $user) {
-        echo '<tr>';
+    <main>
+        <section>
+            <h2>Buscar usuário</h2>
 
-        echo '<td style="border: 1px solid #000000; padding: 15px; color: purple">';
-        echo htmlspecialchars((string) $user['id'], ENT_QUOTES, 'UTF-8');
-        echo '</td>';
+            <form method="GET">
+                <label for="username">Nome de usuário:</label>
 
-        echo '<td style="border: 1px solid #000000; padding: 15px; color: purple">';
-        echo htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8');
-        echo '</td>';
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value="<?= htmlspecialchars($search, ENT_QUOTES, 'UTF-8') ?>"
+                >
 
-        echo '<td style="border: 1px solid #000000; padding: 15px; color: purple">';
-        echo htmlspecialchars($user['email'], ENT_QUOTES, 'UTF-8');
-        echo '</td>';
+                <button type="submit">Buscar</button>
+            </form>
+        </section>
 
-        echo '</tr>';
-    }
+        <?php if ($users): ?>
 
-    echo '</tbody>';
-    echo '</table>';
-} elseif ($search !== '') {
-    echo '<p>Nenhum usuário encontrado.</p>';
-}
+            <section>
+                <h2>Resultados da busca</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome de usuário</th>
+                            <th>E-mail</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($users as $user): ?>
+                            <tr>
+                                <td>
+                                    <?= htmlspecialchars((string) $user['id'], ENT_QUOTES, 'UTF-8') ?>
+                                </td>
+
+                                <td>
+                                    <?= htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8') ?>
+                                </td>
+
+                                <td>
+                                    <?= htmlspecialchars($user['email'], ENT_QUOTES, 'UTF-8') ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </section>
+
+        <?php elseif ($search !== ''): ?>
+
+            <section>
+                <p>Nenhum usuário encontrado.</p>
+            </section>
+
+        <?php endif; ?>
+
+    </main>
+
+</body>
+</html>
